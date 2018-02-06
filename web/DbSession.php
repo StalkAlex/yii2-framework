@@ -80,10 +80,10 @@ class DbSession extends MultiFieldSession
      * This method will initialize the [[db]] property to make sure it refers to a valid DB connection.
      * @throws InvalidConfigException if [[db]] is invalid.
      */
-    public function init()
-    {
-        parent::init();
+    public function __construct(array $config = [])
+    {        
         $this->db = Instance::ensure($this->db, Connection::className());
+		parent::__construct($config);
     }
 
     /**
